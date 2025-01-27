@@ -1,0 +1,42 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e8f5e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Game Container */
+  #game-container {
+    position: relative;
+    width: 100vh;
+    height: 80vh;
+    background-color: #a5d6a7;
+    border: 3px solid #388e3c;
+    overflow: hidden;
+    display: flex;
+    
+
+  }
+  
+  /* Player */
+  #player {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #4caf50;
+    bottom: 5px; 
+  }
+  
+  /* Slime (Enemy) */
+  .slime {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #8e24aa;
+    
+  }
+  
