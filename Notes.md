@@ -8,7 +8,7 @@
 
 ### Tuesday 28.01
 - [x] slime falling and clone
-- [ ] slime movement on floor
+- [x] slime movement on floor
 
 ### Wednesday 29.01
 

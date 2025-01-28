@@ -16,12 +16,10 @@ document.addEventListener('keydown', (event)=>{
 })
 
 
-
-
-
 // calling functions to start the game
 
 slime.dropSlime();
 slime.runSlime();
+
 
 

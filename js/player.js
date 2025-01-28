@@ -1,10 +1,13 @@
+//export dafault class Player {};
+
 class Player{
     constructor(position,playerSpaceLimits,playerSpeed,player, gameSpace){
         this.position = position;
         this.playerSpaceLimits = playerSpaceLimits;
         this.playerSpeed = playerSpeed;
-        this.player = player;
+        this.player = player; 
         this.gameSpace = gameSpace;
+        this.boundsPlayer = new DOMRect();
     }
 
     doWalking(event) {
@@ -20,7 +23,20 @@ class Player{
         };
         
     }
+    getBounds(){
+         // we are getting the left, top, right, bottom, x, y, width, and height properties in px.
+        this.boundsPlayer = this.player.getBoundingClientRect();
+        return this.boundsPlayer;
+
+    };
     
+    // check this for movement?
+    // move(x, y) {
+    //     this.player.style.left = `${x}px`;
+    //     this.player.style.top = `${y}px`;
+    // }
+
+
 };
 
 
