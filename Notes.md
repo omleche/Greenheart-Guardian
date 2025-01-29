@@ -13,11 +13,12 @@
 ### Wednesday 29.01
 
 - [x] collision
-- [ ] slime falling physics
-- [ ] player jumping physics
+- [x] slime falling physics
+- [x] player jumping physics
 
 
 ### Tuesday 30.01
-- [ ] add the characters images and adjust to the css
+- [x] add the characters images and adjust to the css
+- [ ] collision win
 - [ ] screen messages (Start and game over)
 

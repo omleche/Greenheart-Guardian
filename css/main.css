@@ -21,7 +21,6 @@ body {
     border: 3px solid #388e3c;
     overflow: hidden;
     display: flex;
-   
 
   }
   
@@ -30,8 +29,16 @@ body {
     position: absolute;
     width: 128px;
     height: 128px;
-    background-image: url(../assets/Characterrun.png);
     bottom: 5px; 
+  }
+  #plant {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    right: 0;
+    bottom: 0px;
+    background: url(../assets/gem-plant.png);
+    background-position: 0 10px;
   }
   
   /* Slime (Enemy) */
@@ -40,10 +47,49 @@ body {
     top:0;
     width: 128px;
     height: 128px;
-    background-image: url(../assets/Slimejump.png);
-    
+    background: url(../assets/Slimejump.png);
+    background-position: -896px 0;
+
   }
-  
+  /* Animation */
+  .player-run{
+    background: url(../assets/Characterrun.png);
+    animation: playerrunning 1s steps(8) infinite;
+  }
+  @keyframes playerrunning{
+    to { background-position: -1024px;}
+  }
+  .player-stop{
+    background: url(../assets/character-Idle.png);
+    animation: playerrunning 1s steps(8) infinite;
+  }
+  @keyframes playerstop{
+    to { background-position: -640px;}
+  }
+  .change-dead{
+    background: url(../assets/characterDead.png);
+    animation: changedead 0.5s steps(5) ;
+  }
+  @keyframes changedead{
+    to { background-position: -640px;}
+  }
+  .player-left{
+    transform: scaleX(-1);
+  }
+  .player-jump{
+    background: url(../assets/characterJump.png);
+    animation: playerjump 3s steps(8);
+  }
+  @keyframes playerjump{
+    to {background-position: -1024px;}
+  }
+  .slime-attack{
+    background: url(../assets/slimeAttack_1.png);
+    animation: slimeattack 0.5s steps(4)infinite;
+  }
+  @keyframes slimeattack{
+    to { background-position: -512px;}
+  }
 
 
 

@@ -16,6 +16,15 @@ const game = new Game(gameSpace,playerDiv);
 document.addEventListener('keydown', (event)=>{
     if(game.gameOver == false){
         game.player.doWalking(event);
+        
+    };
+   
+})
+
+document.addEventListener('keyup', (event)=>{
+    if(game.gameOver == false){
+        game.player.doWalking(event);
+        game.player.doStop();
     };
    
 })

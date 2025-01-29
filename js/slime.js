@@ -24,7 +24,7 @@ class SlimeObstacle {
         this.newSlime.style.top = `${altitud}px`; // Starting position for the slime
 
         // Random initial position (0-100%)
-        this.currentPosition = Math.floor(Math.random() * 100);
+        this.currentPosition = Math.floor(Math.random() * 90);
         
         // Slime fall speed between 5-10 ms
         let randomSpeed = Math.floor(Math.random() * 6) + 5;
@@ -57,7 +57,7 @@ class SlimeObstacle {
 
     // Slime movement on the floor
     runSlime() {
-        this.newSlime.style.backgroundImage = `url('../assets/slimeAttack_1.png')`; // Add an image to the slime
+        this.newSlime.classList.toggle('slime-attack'); // Add an image to the slime
         let slimeSteps = 0;
         let direction = Math.random(); // Random direction (left or right)
         
