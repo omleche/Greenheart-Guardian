@@ -1,41 +1,49 @@
-import Player from './player.js';
-import SlimeObstacle from '.slime.js';
-// export default class Game {};
+
 
 
 class Game {
-    constructor(gameSpace) {
-        this.gameSpace = gameSpace; 
-        this.player = new Player(gameSpace); // calling the player
+    constructor(gameSpace, playerDiv) {
+        this.gameSpace = gameSpace;
+        this.player = new Player(0,110,15, playerDiv, gameSpace); // calling the player
         this.slime = new SlimeObstacle(gameSpace); // calling the slime
+         // Getting the bounds of the player and slime
+         this.boundsPlayer = this.player.getBounds();
+         this.boundsSlime = this.slime.getBounds();
+         this.gameOver = false;
+         
     }
+
+   
 //Collision formula
-    checkCollision() {
-        const playerBounds = this.player.getBounds();
-        const slimeBounds = this.slime.getBounds();
-
-        // AABB collision detection
-        if (
-            playerBounds.left < slimeBounds.right &&
-            playerBounds.right > slimeBounds.left &&
-            playerBounds.top < slimeBounds.bottom &&
-            playerBounds.bottom > slimeBounds.top
-        ) {
-            console.log('Collision detected!');
-            return true;
-        }
-
-        return false;
+checkCollision() {
+    this.boundsPlayer = this.player.getBounds();
+    this.boundsSlime = this.slime.getBounds();
+    // AABB collision detection
+    if (
+        this.boundsPlayer.left < this.boundsSlime.right &&
+        this.boundsPlayer.right > this.boundsSlime.left &&
+        this.boundsPlayer.top < this.boundsSlime.bottom &&
+        this.boundsPlayer.bottom > this.boundsSlime.top
+    ) {
+        console.log('Collision detected!');
+        this.gameOver = true
+        return true;
     }
 
-    start() {
-        // Example setup to drop slime and check collision periodically
-        this.slime.dropSlime();
-
-        setInterval(() => {
-            if (this.checkCollision()) {
-                console.log('Game Over! Slime hit the player!');
-            }
-        }, 50); // Check for collisions every 50ms
-    }
+    return false;
 }
+
+start() {
+    this.gameOver = false;
+    // Example setup to drop slime and check collision periodically
+    this.slime.dropSlime();
+
+    const gameRun = setInterval(() => {
+        if (this.checkCollision()) {
+            console.log('Game Over! Slime hit the player!');
+            clearInterval(gameRun)
+        }
+    }, 50); // Check for collisions every 50ms
+}
+}
+

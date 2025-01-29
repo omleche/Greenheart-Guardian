@@ -34,6 +34,7 @@ body {
   /* Slime (Enemy) */
   .slime {
     position: absolute;
+    top:0;
     width: 100px;
     height: 100px;
     background-color: #8e24aa;

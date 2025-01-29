@@ -1,86 +1,73 @@
-
 class SlimeObstacle {
-    constructor() {
+    constructor(gameSpace) {
         this.newSlime = document.createElement('div');
         this.currentPosition = 0;
         this.boundsSlime = new DOMRect();
+        this.gameSpace = gameSpace
     }
 
-
-    getBounds(){
-        // we are getting the left, top, right, bottom, x, y, width, and height properties in px.
-        this.boundSlime = this.newSlime.getBoundingClientRect(); 
+    getBounds() {
+        // We are getting the left, top, right, bottom, x, y, width, and height properties in px.
+        this.boundSlime = this.newSlime.getBoundingClientRect();
         return this.boundSlime;
-
     };
 
-
     // Falling Slime
-
-
     dropSlime() {
         let altitud = 0;
         // Create new slime
         this.newSlime = document.createElement('div');
-
         this.newSlime.classList.toggle("slime");
-        gameSpace.appendChild(this.newSlime);
+        this.gameSpace.appendChild(this.newSlime);
 
-        // random initialPosition
-        this.currentPosition = Math.floor(Math.random() * 100)
-        let randomSpeed = Math.floor(5, Math.random() * 10)
+        // Random initialPosition
+        this.currentPosition = Math.floor(Math.random() * 100);
+
+        // Speed between 5-10
+        let randomSpeed = Math.floor(Math.random() * 6) + 5;
+
         this.newSlime.style.left = `${this.currentPosition}%`;
-        // slime starting to fall
+
+        // Slime starts falling
         let fallingSlime = setInterval(() => {
-            console.log(altitud)
-            console.log(gameSpace.offsetHeight)
             if (altitud < gameSpace.offsetHeight - 100) {
-                altitud++;
-                this.newSlime.style.top = `${altitud}px`
+                altitud += 5;
+                this.newSlime.style.top = `${altitud}px`;
             } else {
                 clearInterval(fallingSlime);
-                this.runSlime();
-                return;
-                //this.dropSlime();
+                this.runSlime(); // Start moving slime on the floor
+                this.removeSlime(); // Remove slime after 3 seconds of being on the floor
             }
-
-        }, randomSpeed)
-
+        }, randomSpeed);
     }
 
-
-    // Slime movement on floor
-
+    // Slime movement on the floor
     runSlime() {
-        let slimeSteps = 0
+        let slimeSteps = 0;
         let direction = Math.random();
-        const runDirection = setInterval(()=>{
+        const runDirection = setInterval(() => {
             if (direction < 0.5) {
-                this.currentPosition ++; // Move left
+                this.currentPosition+= 5; // Move left
             } else {
-                this.currentPosition --; // Move right
+                this.currentPosition-= 5; // Move right
             }
-            slimeSteps ++;
+            slimeSteps++;
+
             // Ensure it stays between 0% and 100%
-            if (slimeSteps < 8){
+            if (slimeSteps < 10) {
                 this.newSlime.style.left = `${this.currentPosition}%`;
             } else {
-                 // Check if `this.newSlime` is still a child of `gameSpace`
-            if (gameSpace.contains(this.newSlime)) {
-                gameSpace.removeChild(this.newSlime);
+                clearInterval(runDirection); // Stop moving slime
             }
-                
-                clearInterval(runDirection);
-                
-            } 
-
-        },1000)
-
+        }, 1000);
     }
 
-    getBounds(){
-        this.bounds.getBounding();
-    };
-    
-
+    // Remove slime after 3 seconds
+    removeSlime() {
+        setTimeout(() => {
+            if (this.gameSpace.contains(this.newSlime)) {
+                this.gameSpace.removeChild(this.newSlime); // Remove slime from the game
+            }
+        }, 3000); // 3 seconds after the slime touches the floor
+    }
 };

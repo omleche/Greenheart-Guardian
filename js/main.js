@@ -1,6 +1,8 @@
-const player = document.getElementById('player');
+
+
+const playerDiv = document.getElementById('player');
 const gameSpace = document.getElementById('game-container');
-const slime = new SlimeObstacle();
+
 
 
 // this gives a chance to add powerups in the future
@@ -9,17 +11,22 @@ let playerSpeed = 15;
 // Boundary for the player movement
 const playerSpaceLimits = 110;
 
-const playerClass = new Player(0,playerSpaceLimits,playerSpeed,player,gameSpace);
+const game = new Game(gameSpace,playerDiv);
 
 document.addEventListener('keydown', (event)=>{
-    playerClass.doWalking(event);
+    if(game.gameOver == false){
+        game.player.doWalking(event);
+    };
+   
 })
 
 
 // calling functions to start the game
+game.start();
 
-slime.dropSlime();
-slime.runSlime();
+// slime.dropSlime();
+// slime.runSlime();
+
 
 
 
