@@ -8,8 +8,8 @@ body {
     align-items: center;
     height: 100vh;
     background-image: url(../assets/background.png);
-    background-size:contain;
-    background-repeat: no-repeat;
+    background-size:cover;
+   
   }
   
   /* Game Container */
