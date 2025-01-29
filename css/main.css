@@ -7,6 +7,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url(../assets/background.png);
+    background-size:contain;
+    background-repeat: no-repeat;
   }
   
   /* Game Container */
@@ -14,20 +17,20 @@ body {
     position: relative;
     width: 100vh;
     height: 80vh;
-    background-color: #a5d6a7;
+    background-color: transparent;
     border: 3px solid #388e3c;
     overflow: hidden;
     display: flex;
-    
+   
 
   }
   
   /* Player */
   #player {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: #4caf50;
+    width: 128px;
+    height: 128px;
+    background-image: url(../assets/Characterrun.png);
     bottom: 5px; 
   }
   
@@ -35,9 +38,9 @@ body {
   .slime {
     position: absolute;
     top:0;
-    width: 100px;
-    height: 100px;
-    background-color: #8e24aa;
+    width: 128px;
+    height: 128px;
+    background-image: url(../assets/Slimejump.png);
     
   }
   

@@ -35,8 +35,11 @@ checkCollision() {
 
 start() {
     this.gameOver = false;
-    // Example setup to drop slime and check collision periodically
-    this.slime.dropSlime();
+    //Drop slime and check collision periodically
+    for(let amount= 0; amount < 5; amount++) {
+        this.slime.dropSlime();
+    };
+   
 
     const gameRun = setInterval(() => {
         if (this.checkCollision()) {

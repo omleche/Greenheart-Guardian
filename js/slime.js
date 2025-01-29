@@ -39,6 +39,7 @@ class SlimeObstacle {
                 this.removeSlime(); // Remove slime after 3 seconds of being on the floor
             }
         }, randomSpeed);
+       
     }
 
     // Slime movement on the floor

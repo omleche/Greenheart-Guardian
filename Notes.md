@@ -12,7 +12,7 @@
 
 ### Wednesday 29.01
 
-- [ ] collision
+- [x] collision
 - [ ] slime falling physics
 - [ ] player jumping physics
 

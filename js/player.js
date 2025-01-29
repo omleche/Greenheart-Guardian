@@ -11,7 +11,6 @@ class Player{
     }
 
     doWalking(event) {
-        console.log(event.key)
         if (event.key === 'ArrowLeft' && this.position > 0) {
             // this.player.style.left = `${this.position - this.playerSpeed}px`;
             this.position -= this.playerSpeed; // For ArrowLeft
