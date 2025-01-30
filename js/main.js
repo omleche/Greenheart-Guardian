@@ -2,6 +2,7 @@
 
 const playerDiv = document.getElementById('player');
 const gameSpace = document.getElementById('game-container');
+const safePlace = document.getElementById('gemPlant');
 
 
 
@@ -11,7 +12,7 @@ let playerSpeed = 15;
 // Boundary for the player movement
 const playerSpaceLimits = 110;
 
-const game = new Game(gameSpace,playerDiv);
+const game = new Game(gameSpace,playerDiv,safePlace);
 
 document.addEventListener('keydown', (event)=>{
     if(game.gameOver == false){
@@ -23,10 +24,8 @@ document.addEventListener('keydown', (event)=>{
 
 document.addEventListener('keyup', (event)=>{
     if(game.gameOver == false){
-        game.player.doWalking(event);
         game.player.doStop();
     };
-   
 })
 
 

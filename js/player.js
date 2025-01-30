@@ -61,7 +61,7 @@ class Player {
                 }
                 this.bottom += acc
                 this.playerDiv.style.bottom = `${this.bottom}px`
-            }, 50)
+            }, 25)
 
         }
 

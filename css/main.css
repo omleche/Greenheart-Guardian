@@ -31,26 +31,96 @@ body {
     height: 128px;
     bottom: 5px; 
   }
-  #plant {
+  #gemPlant {
     position: absolute;
-    width: 128px;
-    height: 128px;
+    width: 200px;
+    height: 200px;
     right: 0;
     bottom: 0px;
     background: url(../assets/gem-plant.png);
-    background-position: 0 10px;
+    background-size: 110%;
+    background-position: center;
   }
   
   /* Slime (Enemy) */
   .slime {
     position: absolute;
-    top:0;
     width: 128px;
     height: 128px;
     background: url(../assets/Slimejump.png);
     background-position: -896px 0;
 
   }
+  /*Messages Block*/
+  #message-game{
+    position: absolute;
+    margin: auto ;
+    top:0;
+    right: 0;
+    bottom: 15%;
+    left:0;
+    width: 75%;
+    height: 50%;
+    overflow: hidden;
+
+       /* Flexbox Centering */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;      /* Centers vertically */
+    
+    text-align: center;       /* Ensures multiline text is centered */
+    color: white; /* Example text color */
+  }
+  .h1{
+    font-family: "Jersey 20", serif;
+    font-size: 5rem;
+    text-shadow:black 1px 0 10px;
+    font-stretch:extra-expanded;
+    color:yellowgreen;
+    margin: 0;
+  }
+  .h2{
+    font-family: "Jersey 20", serif;
+    font-size: 2rem;
+    text-shadow:black 1px 0 10px;
+    color:rgb(255, 94, 0);
+    margin: 0;
+    
+  }
+  .p{
+    font-family: "Jersey 20", serif;
+    font-size: 1.5rem;
+    color:black;
+    
+  }
+  /*BTN*/
+  .BTN{
+    position: absolute;
+    margin: auto;
+    top:0;
+    right: 0;
+    bottom: -50%;
+    left:0;
+    width:25%;
+    height: 10%;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 10px;
+
+    font-family: "Jersey 20", serif;
+    font-size: 1rem !important;
+
+  }
+
+  /* Font */
+  .jersey-20-regular {
+    font-family: "Jersey 20", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
   /* Animation */
   .player-run{
     background: url(../assets/Characterrun.png);
