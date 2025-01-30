@@ -21,6 +21,11 @@
 - [x] add the characters images and adjust to the css
 - [x] collision win
 - [x] screen messages (Start and game over)
-- [ ] protect sanctuary area
-- [ ] add audios
+- [x] protect sanctuary area
+- [x] add audios
 
+### Bugs
+- [ ] jumping in diagonal
+
+### New Feautures
+- [x] kill the slimes

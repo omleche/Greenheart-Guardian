@@ -17,10 +17,23 @@ const game = new Game(gameSpace,playerDiv,safePlace);
 document.addEventListener('keydown', (event)=>{
     if(game.gameOver == false){
         game.player.doWalking(event);
+        }
+    if (game.gamestarted == false){
+        game.gamestarted = true;
         
-    };
+         //background Audio
+        const audio = document.createElement("audio");
+        audio.src = "./assets/forest.wav";
+        audio.loop = true;
+        audio.volume = 0.4;
+        document.body.appendChild(audio);
+        audio.play();
+
+        // calling functions to start the game
+        game.start();
+    }
    
-})
+    });
 
 document.addEventListener('keyup', (event)=>{
     if(game.gameOver == false){
@@ -28,19 +41,9 @@ document.addEventListener('keyup', (event)=>{
     };
 })
 
-//background Audio
-const audio = document.createElement("audio");
-audio.src = "./assets/forest.wav";
-audio.loop = true;
-audio.volume = 0.3;
-document.body.appendChild(audio);
-audio.play();
+// calling starting message
+game.prestage();
 
-// calling functions to start the game
-game.start();
-
-// slime.dropSlime();
-// slime.runSlime();
 
 
 

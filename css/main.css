@@ -71,6 +71,21 @@ body {
     text-align: center;   
     color: white;
   }
+  .counter{
+    position: absolute;
+    top:0;
+    right: 0;
+    float:right;
+    width: 25%;
+    overflow: hidden;
+    text-align: center;
+    background-color:rgba(255, 255, 255, 0.637);
+    font-family: "Jersey 20", serif;
+    font-size: x-large;
+    border-radius: 25px;
+    box-shadow: white 0px 0 10px;
+    
+  }
   .h1{
     font-family: "Jersey 20", serif;
     font-size: 5rem;
@@ -83,13 +98,18 @@ body {
     font-family: "Jersey 20", serif;
     font-size: 2rem;
     text-shadow:white 1px 0 2px;
-    color:rgb(255, 94, 0);
+    color:rgb(156, 59, 2);
     margin: 0;
   }
   .p{
     font-family: "Jersey 20", serif;
     font-size: 1.5rem;
     color:black;
+    background-color:rgba(255, 255, 255, 0.637);
+    border-radius: 25px;
+    padding: 5px 25px;
+    box-shadow: white 0px 0 10px;
+
     
   }
   /*BTN*/
@@ -158,6 +178,12 @@ body {
   @keyframes slimeattack{
     to { background-position: -512px;}
   }
-
+  .player-kill{
+    background: url(../assets/characterKill.png);
+    animation: slimeattack 0.5s steps(4) infinite;
+  }
+  @keyframes player-kill{
+    to { background-position: -384px;}
+  }
 
 

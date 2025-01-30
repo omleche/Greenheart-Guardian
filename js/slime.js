@@ -47,8 +47,20 @@ class SlimeObstacle {
                 
                 // Add a delay before the slime starts moving
                 setTimeout(() => {
-                    this.runSlime(); // Start moving slime on the floor
-                }, 500); // Short delay before it starts moving
+
+                     // audio 
+                    const audio = document.createElement("audio");
+                    audio.src = "./assets/Slimefalling.wav";
+                    audio.volume = 0.1;
+                    document.body.appendChild(audio);
+
+                    // Play the audio
+                    audio.play()
+                        .then(() => console.log("Audio is playing"))
+                        .catch(error => console.error("Autoplay blocked:", error));
+
+                    this.runSlime(); 
+                }, 100); 
 
                 this.removeSlime(); // Remove slime after 3 seconds on the floor
             }
@@ -70,11 +82,11 @@ class SlimeObstacle {
             }
             slimeSteps++;
 
-            // Ensure slime stays within 0% to 100% of the game container's width
+            // Ensure slime stays within 0% to 90% of the game container's width
             if (this.currentPosition < 0) {
                 this.currentPosition = 0; // Prevent going out of the left bounds
-            } else if (this.currentPosition > 100) {
-                this.currentPosition = 100; // Prevent going out of the right bounds
+            } else if (this.currentPosition > 90) {
+                this.currentPosition = 90; // Prevent going out of the right bounds
             }
 
             if (slimeSteps < 10) {

@@ -11,6 +11,8 @@ class Game {
         this.safePlace = safePlace
         this.boundsSafePlace = new DOMRect();
         this.gameOver = false;
+        this.kills = 0;
+        this.gamestarted = false;
 
     }
 
@@ -21,9 +23,11 @@ class Game {
         if (this.gameOver == false) {
             this.boundsPlayer = this.player.getBounds();
             this.boundsSafePlace = this.getBounds();
-            this.slimes.forEach((slime) => {
+
+            this.slimes.forEach((slime,index) => {
                 this.boundsSlime = slime.getBounds();
 
+       
                 // AABB collision detection with slime
 
                 if (
@@ -32,41 +36,38 @@ class Game {
                     this.boundsPlayer.top - 32 < this.boundsSlime.bottom - 50 &&
                     this.boundsPlayer.bottom - 32 > this.boundsSlime.top - 70
                 ) {
-                  
+                    // killing the slime
+                    if (this.player.isKilling == true) {
+                        this.kills++;
+                        this.slimes.splice(index, 1);
+                        this.gameSpace.removeChild(slime.newSlime);
+                        //showing killing number
+                        const killings = document.getElementById('counter');
+                        killings.innerText = this.kills;
+
+                        return; 
+                    }
                     this.doSoundCollition();
                     this.player.changeDead();
                     this.doLose();
                     this.gameOver = true
                     return true;
                 }
+            
             })
-            // AABB collision detection with safePlace
+            // AABB collision detection Player with safePlace
 
             if (
-                this.boundsPlayer.left < this.boundsSafePlace.right -150 &&
-                this.boundsPlayer.right > this.boundsSafePlace.left +150 &&
-                this.boundsPlayer.top < this.boundsSafePlace.bottom -50 &&
-                this.boundsPlayer.bottom > this.boundsSafePlace.top -50
+                this.boundsPlayer.left < this.boundsSafePlace.right - 150 &&
+                this.boundsPlayer.right > this.boundsSafePlace.left + 150 &&
+                this.boundsPlayer.top < this.boundsSafePlace.bottom - 50 &&
+                this.boundsPlayer.bottom > this.boundsSafePlace.top - 50
             ) {
                 console.log('Win!');
                 this.doWin();
                 this.gameOver = true
                 return true;
             }
-
-            // AABB collision detection between safePlace and Slime
-
-            // if (
-            //     this.boundsPlayer.left < this.boundsSafePlace.right -150 &&
-            //     this.boundsPlayer.right > this.boundsSafePlace.left +150 &&
-            //     this.boundsPlayer.top < this.boundsSafePlace.bottom -50 &&
-            //     this.boundsPlayer.bottom > this.boundsSafePlace.top -50
-            // ) {
-            //     console.log('Win!');
-            //     this.doWin();
-            //     this.gameOver = true
-            //     return true;
-            // }
 
             return false;
         }
@@ -122,16 +123,16 @@ class Game {
         h2.classList.add('h2');
         messageBlock.appendChild(h2);
 
-         // audio 
-         const audio = document.createElement("audio");
-         audio.src = "./assets/gameover.wav";
-         audio.volume = 0.05;
-         document.body.appendChild(audio);
- 
-         // Play the audio
-         audio.play()
-             .then(() => console.log("Audio is playing"))
-             .catch(error => console.error("Autoplay blocked:", error));
+        // audio 
+        const audio = document.createElement("audio");
+        audio.src = "./assets/gameover.wav";
+        audio.volume = 0.02;
+        document.body.appendChild(audio);
+
+        // Play the audio
+        audio.play()
+            .then(() => console.log("Audio is playing"))
+            .catch(error => console.error("Autoplay blocked:", error));
 
         const btn = document.createElement('button');
         btn.textContent = 'Play again!';
@@ -142,11 +143,7 @@ class Game {
         })
 
     }
-
-
-    start() {
-        this.gameOver = false;
-        let acc = 0;
+    prestage(){
         const messageBlock = document.getElementById('message-game')
         // Create an h1 element
         const h1 = document.createElement('h1');
@@ -156,19 +153,23 @@ class Game {
         messageBlock.appendChild(h1);
 
         const h2 = document.createElement('h2');
-        h2.textContent = 'be careful with the evil slime!';
+        h2.textContent = 'Be careful with the evil slime!';
         h2.classList.add('h2');
         messageBlock.appendChild(h2);
 
         const inst = document.createElement('p');
-        inst.textContent = 'Press arrow left to start moving';
+        inst.textContent = 'Press arrow left to start moving and arrow down to kill the slime';
         inst.classList.add('p');
         messageBlock.appendChild(inst);
-        
 
+    };
+
+    start() {
+        this.gameOver = false;
+        let acc = 0;
         //Drop slime and check collision periodically
         const slimeAppear = setInterval(() => {
-            if (acc != 3) {
+            if (acc != 8) {
 
                 const slime = new SlimeObstacle(this.gameSpace); // calling the slime
                 slime.dropSlime();
@@ -183,8 +184,6 @@ class Game {
         const gameRun = setInterval(() => {
             if (this.checkCollision()) {
                 clearInterval(gameRun)
-
-
             }
         }, 50); // Check for collisions every 50ms
     }
@@ -193,18 +192,18 @@ class Game {
         this.boundsSafePlace = this.safePlace.getBoundingClientRect();
         return this.boundsSafePlace;
     }
-    doSoundCollition(){
+    doSoundCollition() {
         const audio = document.createElement("audio");
         audio.src = "./assets/collitionsound.wav";
         audio.volume = 1;
         document.body.appendChild(audio);
-   
+
         // Play the audio
         audio.play()
             .then(() => console.log("Audio is playing"))
             .catch(error => console.error("Autoplay blocked:", error));
-   }
-}
+    }
+};
 
-
+// END.
 

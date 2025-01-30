@@ -10,6 +10,7 @@ class Player {
         this.boundsPlayer = new DOMRect();
         this.bottom = 5;
         this.playerDiv.style.bottom = '5px';
+        this.isKilling = false;
 
     }
 
@@ -19,6 +20,7 @@ class Player {
             this.playerDiv.classList.add('player-run');
             this.playerDiv.classList.add('player-left');
             this.playerDiv.classList.remove('player-stop');
+            this.playerDiv.classList.remove('player-kill');
             // this.player.style.left = `${this.position - this.playerSpeed}px`;
             this.position -= this.playerSpeed; // For ArrowLeft
             this.playerDiv.style.left = `${this.position}px`;
@@ -30,6 +32,8 @@ class Player {
             // this.player.style.left = `${this.position + this.playerSpeed}px`;
             this.position += this.playerSpeed; // For ArrowRight
             this.playerDiv.style.left = `${this.position}px`;
+        } else if(event.key ==='ArrowDown'){
+            this.doKill(); 
         };
 
         const currentBottom = parseInt(this.playerDiv.style.bottom);
@@ -70,23 +74,37 @@ class Player {
     doStop() {
         this.playerDiv.classList.add('player-stop');
         this.playerDiv.classList.remove('player-run');
+        this.playerDiv.classList.remove('player-kill');
+        this.isKilling = false;
     }
     changeDead() {
         this.playerDiv.classList.remove('player-jump');
         this.playerDiv.classList.remove('player-stop');
         this.playerDiv.classList.remove('player-run');
+        this.playerDiv.classList.remove('player-kill');
         this.playerDiv.classList.add('change-dead');
+        this.isKilling = false;
     }
     doJump() {
         this.playerDiv.classList.remove('player-stop');
         this.playerDiv.classList.remove('player-run');
+        this.playerDiv.classList.remove('player-kill');
         this.playerDiv.classList.add('player-jump');
+        this.isKilling = false;
 
     }
     doStopJump(){
         this.playerDiv.classList.remove('player-jump');
+        this.isKilling = false;
     }
-
+    
+    doKill(){
+        this.playerDiv.classList.remove('player-jump');
+        this.playerDiv.classList.remove('player-stop');
+        this.playerDiv.classList.remove('player-run');
+        this.playerDiv.classList.add('player-kill');
+        this.isKilling = true
+    }
 
     getBounds() {
         // we are getting the left, top, right, bottom, x, y, width, and height properties in px.
