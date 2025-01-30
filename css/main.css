@@ -18,7 +18,6 @@ body {
     width: 100vh;
     height: 80vh;
     background-color: transparent;
-    border: 3px solid #388e3c;
     overflow: hidden;
     display: flex;
 
@@ -67,10 +66,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;  
-    align-items: center;      /* Centers vertically */
+    align-items: center;  
     
-    text-align: center;       /* Ensures multiline text is centered */
-    color: white; /* Example text color */
+    text-align: center;   
+    color: white;
   }
   .h1{
     font-family: "Jersey 20", serif;
@@ -83,10 +82,9 @@ body {
   .h2{
     font-family: "Jersey 20", serif;
     font-size: 2rem;
-    text-shadow:black 1px 0 10px;
+    text-shadow:white 1px 0 2px;
     color:rgb(255, 94, 0);
     margin: 0;
-    
   }
   .p{
     font-family: "Jersey 20", serif;

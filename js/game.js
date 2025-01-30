@@ -32,8 +32,8 @@ class Game {
                     this.boundsPlayer.top - 32 < this.boundsSlime.bottom - 50 &&
                     this.boundsPlayer.bottom - 32 > this.boundsSlime.top - 70
                 ) {
-                    console.log('Collision detected!');
-
+                  
+                    this.doSoundCollition();
                     this.player.changeDead();
                     this.doLose();
                     this.gameOver = true
@@ -87,6 +87,18 @@ class Game {
         h2.classList.add('h2');
         messageBlock.appendChild(h2);
 
+        // audio 
+        const audio = document.createElement("audio");
+        audio.src = "./assets/safePlace.wav";
+        audio.volume = 0.1;
+        document.body.appendChild(audio);
+
+        // Play the audio
+        audio.play()
+            .then(() => console.log("Audio is playing"))
+            .catch(error => console.error("Autoplay blocked:", error));
+
+        //button
         const btn = document.createElement('button');
         btn.textContent = 'Play again!';
         btn.classList.add('BTN');
@@ -109,6 +121,17 @@ class Game {
         h2.textContent = 'Do you want to try again?';
         h2.classList.add('h2');
         messageBlock.appendChild(h2);
+
+         // audio 
+         const audio = document.createElement("audio");
+         audio.src = "./assets/gameover.wav";
+         audio.volume = 0.05;
+         document.body.appendChild(audio);
+ 
+         // Play the audio
+         audio.play()
+             .then(() => console.log("Audio is playing"))
+             .catch(error => console.error("Autoplay blocked:", error));
 
         const btn = document.createElement('button');
         btn.textContent = 'Play again!';
@@ -170,6 +193,18 @@ class Game {
         this.boundsSafePlace = this.safePlace.getBoundingClientRect();
         return this.boundsSafePlace;
     }
+    doSoundCollition(){
+        const audio = document.createElement("audio");
+        audio.src = "./assets/collitionsound.wav";
+        audio.volume = 1;
+        document.body.appendChild(audio);
+   
+        // Play the audio
+        audio.play()
+            .then(() => console.log("Audio is playing"))
+            .catch(error => console.error("Autoplay blocked:", error));
+   }
 }
+
 
 

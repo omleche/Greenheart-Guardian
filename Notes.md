@@ -19,6 +19,8 @@
 
 ### Thursday 30.01
 - [x] add the characters images and adjust to the css
-- [ ] collision win
-- [ ] screen messages (Start and game over)
+- [x] collision win
+- [x] screen messages (Start and game over)
+- [ ] protect sanctuary area
+- [ ] add audios
 

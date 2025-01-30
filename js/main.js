@@ -28,6 +28,13 @@ document.addEventListener('keyup', (event)=>{
     };
 })
 
+//background Audio
+const audio = document.createElement("audio");
+audio.src = "./assets/forest.wav";
+audio.loop = true;
+audio.volume = 0.3;
+document.body.appendChild(audio);
+audio.play();
 
 // calling functions to start the game
 game.start();
