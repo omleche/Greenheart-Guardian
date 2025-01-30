@@ -21,4 +21,5 @@ Green Heart Guardian is a JavaScript-based game where the player must avoid fall
 - [JavaScript Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [HTML & CSS Basics](https://www.w3schools.com/)
 - [Pixel Art by craftpix.net](https://craftpix.net/)
+- [Sounds by Freesound.org](https://freesound.org/)
 - [Ironhack Web Dev Program](https://www.ironhack.com/nl-en)
